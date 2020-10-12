@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D95EE857252FDEBC000E5907 /* Optile in Frameworks */ = {isa = PBXBuildFile; productRef = D95EE856252FDEBC000E5907 /* Optile */; };
 		D9A0CBD02506E5C500A26172 /* Theme+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A0CBCF2506E5C500A26172 /* Theme+custom.swift */; };
 		D9E0AEB1234143BD0021184C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0AEB0234143BD0021184C /* AppDelegate.swift */; };
 		D9E0AEB5234143BD0021184C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E0AEB4234143BD0021184C /* ViewController.swift */; };
@@ -29,7 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D967F71723C7C6450001B778 /* Optile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Optile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D95EE855252FDEA7000E5907 /* ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-sdk"; path = ..; sourceTree = "<group>"; };
 		D9A0CBCF2506E5C500A26172 /* Theme+custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+custom.swift"; sourceTree = "<group>"; };
 		D9E0AEAD234143BD0021184C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E0AEB0234143BD0021184C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D95EE857252FDEBC000E5907 /* Optile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +56,6 @@
 		D9D705FC23703B66004000AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D967F71723C7C6450001B778 /* Optile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -62,6 +63,7 @@
 		D9E0AEA4234143BD0021184C = {
 			isa = PBXGroup;
 			children = (
+				D95EE855252FDEA7000E5907 /* ios-sdk */,
 				D9E0AEAF234143BD0021184C /* Sources */,
 				D9E0AEAE234143BD0021184C /* Products */,
 				D9D705FC23703B66004000AE /* Frameworks */,
@@ -107,6 +109,9 @@
 			dependencies = (
 			);
 			name = Example;
+			packageProductDependencies = (
+				D95EE856252FDEBC000E5907 /* Optile */,
+			);
 			productName = Example;
 			productReference = D9E0AEAD234143BD0021184C /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -368,6 +373,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D95EE856252FDEBC000E5907 /* Optile */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Optile;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9E0AEA5234143BD0021184C /* Project object */;
 }

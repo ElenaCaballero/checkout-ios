@@ -28,7 +28,17 @@ extension List.Table {
                 throw InternalError(description: "Unable to load a credit card's generic icon")
             }
 
-            dataSource = .init(networks: session.networks, accounts: session.registeredAccounts, translation: translationProvider, genericLogo: genericLogo)
+            switch session.operationType {
+             case "UPDATE":
+                // If we in UPDATE flow and user has registered accounts, we don't display networks
+                if let registeredAccounts = session.registeredAccounts, !registeredAccounts.isEmpty {
+                    dataSource = .init(networks: nil, accounts: registeredAccounts, translation: translationProvider, genericLogo: genericLogo)
+                } else {
+                    fallthrough
+                }
+            default:
+                dataSource = .init(networks: session.networks, accounts: session.registeredAccounts, translation: translationProvider, genericLogo: genericLogo)
+            }
         }
 
         fileprivate func loadLogo(for indexPath: IndexPath) {

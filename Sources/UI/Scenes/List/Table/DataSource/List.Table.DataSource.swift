@@ -13,7 +13,7 @@ extension List.Table {
         private let sections: [Section]
         private let translationProvider: TranslationProvider
 
-        init(networks: [PaymentNetwork], accounts: [RegisteredAccount]?, translation: SharedTranslationProvider, genericLogo: UIImage) {
+        init(networks: [PaymentNetwork]?, accounts: [RegisteredAccount]?, translation: SharedTranslationProvider, genericLogo: UIImage) {
             self.translationProvider = translation
 
             var sections = [Section]()
@@ -31,24 +31,26 @@ extension List.Table {
             }
 
             // Fill networrks
-            let groupedNetworks = GroupingService().group(networks: networks)
+            if let networks = networks {
+                let groupedNetworks = GroupingService().group(networks: networks)
 
-            var singleRows = [SingleNetworkRow]()
-            var detailedRows = [GroupedNetworkRow]()
+                var singleRows = [SingleNetworkRow]()
+                var detailedRows = [GroupedNetworkRow]()
 
-            for networks in groupedNetworks {
-                guard !networks.isEmpty else { continue }
+                for networks in groupedNetworks {
+                    guard !networks.isEmpty else { continue }
 
-                if networks.count == 1, let network = networks.first {
-                    let row = SingleNetworkRow(network: network)
-                    singleRows.append(row)
-                } else {
-                    let row = GroupedNetworkRow(networks: networks, genericLogo: genericLogo)
-                    detailedRows.append(row)
+                    if networks.count == 1, let network = networks.first {
+                        let row = SingleNetworkRow(network: network)
+                        singleRows.append(row)
+                    } else {
+                        let row = GroupedNetworkRow(networks: networks, genericLogo: genericLogo)
+                        detailedRows.append(row)
+                    }
                 }
+                let networkSection = Section.networks(rows: detailedRows + singleRows)
+                sections.append(networkSection)
             }
-            let networkSection = Section.networks(rows: detailedRows + singleRows)
-            sections.append(networkSection)
 
             // Don't display empty sections
             self.sections = sections.filter {

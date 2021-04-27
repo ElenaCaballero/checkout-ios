@@ -32,12 +32,12 @@ extension List.Table {
              case "UPDATE":
                 // If we in UPDATE flow and user has registered accounts, we don't display networks
                 if let registeredAccounts = session.registeredAccounts, !registeredAccounts.isEmpty {
-                    dataSource = .init(networks: nil, accounts: registeredAccounts, translation: translationProvider, genericLogo: genericLogo)
+                    dataSource = .init(networks: nil, accounts: registeredAccounts, translation: translationProvider, genericLogo: genericLogo, operationType: session.operationType)
                 } else {
                     fallthrough
                 }
             default:
-                dataSource = .init(networks: session.networks, accounts: session.registeredAccounts, translation: translationProvider, genericLogo: genericLogo)
+                dataSource = .init(networks: session.networks, accounts: session.registeredAccounts, translation: translationProvider, genericLogo: genericLogo, operationType: session.operationType)
             }
         }
 

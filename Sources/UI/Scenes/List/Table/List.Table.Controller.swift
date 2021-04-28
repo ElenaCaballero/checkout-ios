@@ -29,7 +29,7 @@ extension List.Table {
             }
 
             switch session.operationType {
-             case "UPDATE":
+            case .UPDATE:
                 // If we in UPDATE flow and user has registered accounts, we don't display networks
                 if let registeredAccounts = session.registeredAccounts, !registeredAccounts.isEmpty {
                     dataSource = .init(networks: nil, accounts: registeredAccounts, translation: translationProvider, genericLogo: genericLogo, operationType: session.operationType)
